@@ -1,5 +1,6 @@
 # BrainfuckInterpreter
-Simple brainfuck interpreter written in C
+Simple brainfuck interpreter written in C<br>
+Ports into different languages are available under the ports directory (although no compile scripts)
 
 # Features/Quirks
 Features that this interpreter has:
