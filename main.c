@@ -46,7 +46,7 @@ static inline void handleDecrCell() {
 }
 
 static inline void handleOutputCell() {
-    putc(data[dataPtr], stdout);
+    fputc(data[dataPtr], stdout);
 }
 
 static inline void handleReadCell() {
@@ -167,9 +167,10 @@ int main(int argc, char** argv) {
         fprintf(stderr, "error: could not open %s\n", argv[1]);
         return 1;
     }
-    
     data = malloc(DATA_ARRAY_SIZE);
     memset(data, 0, DATA_ARRAY_SIZE);
+
+    setvbuf(stdout, NULL, _IONBF, 0); // Make stdout unbuffered
     signal(SIGINT, interruptHandler);
     fprintf(stderr, "running, press ctrl+c to abort, press ctrl+d EOF\n");
     
@@ -179,7 +180,8 @@ int main(int argc, char** argv) {
         programPtr++;
         opcodeHandler(op);
     }
-
+    
+    fflush(stdout); // This is not necessary, but fuck it
     double execTime = (double)(clock() - startTime) / CLOCKS_PER_SEC;
     fprintf(stderr, "\ndone, took: %f\n", execTime);
     terminate(0);
