@@ -11,7 +11,7 @@ public class Brainfuck {
 	private static void handleNextCell() {
 	    dataPtr++;
 	    if (dataPtr >= DATA_ARRAY_SIZE) {
-	        System.err.printf("\nerror: data pointer out of bounds\n");
+	        System.err.println("\nerror: data pointer out of bounds");
 	        terminate(1);
 	    }
 	}
@@ -19,7 +19,7 @@ public class Brainfuck {
 	private static void handlePrevCell() {
 	    dataPtr--;
 	    if (dataPtr < 0) {
-	        System.err.printf("\nerror: data pointer out of bounds\n");
+	        System.err.println("\nerror: data pointer out of bounds");
 	        terminate(1);
 	    }
 	}
@@ -57,7 +57,7 @@ public class Brainfuck {
 	    int loop = 1;
 	    while (loop > 0) {
 	        if (programPtr + 1 >= program.length) {
-	            System.err.printf("\nerror: unmatched [\n");
+	            System.err.println("\nerror: unmatched [");
 	            terminate(1);
 	        }
 	        char c = program[++programPtr];
@@ -78,7 +78,7 @@ public class Brainfuck {
 	    int loop = 1;
 	    while (loop > 0) {
 	        if (programPtr - 1 < 0) {
-	            System.err.printf("\nerror: unmatched ]\n");
+	            System.err.println("\nerror: unmatched ]");
 	            terminate(1);
 	        }
 	        char c = program[--programPtr];
@@ -166,7 +166,7 @@ public class Brainfuck {
 		System.err.println("running, press ctrl+c to abort, press ctrl+d EOF");
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-			System.err.printf("\naborted\n");
+			System.err.println("\naborted");
 			terminate(0);
 		}));
 		
