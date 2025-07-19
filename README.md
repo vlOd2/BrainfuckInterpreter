@@ -1,12 +1,16 @@
 # BrainfuckInterpreter
 Simple brainfuck interpreter written in C
 
-# Implementation notes
+# Features/Quirks
+Features that this interpreter has:
 - Prints are not buffered and are on stdout
 - Interpreter messages are written on stderr
 - Reading EOF will not write anything to the cell
 - Interrupting (ctrl+c) instantly aborts the execution
 
+This interpreter passes most of the tests from [here](https://brainfuck.org/tests.b), except for:
+- the unmatched \[/\] tests do not pass since the interpreter does not analyse them ahead of time
+- the end of line test passes, but only on Linux (due to the lack of EOL consistency)
+
 # Examples
-You can find a lot of example BF code on [brainfuck.org](https://brainfuck.org/)<br>
-Some of them may not work properly due to comments not being escaped
+You can find example Brainfuck code (and the test suite) on [brainfuck.org](https://brainfuck.org/)<br>
