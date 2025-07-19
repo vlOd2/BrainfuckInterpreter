@@ -11,7 +11,7 @@ Features that this interpreter has:
 - 8-bit or 32-bit data array (must be changed in the source code)
 
 This interpreter passes most of the tests from [here](https://brainfuck.org/tests.b), except for:
-- the unmatched \[/\] tests do not pass since the interpreter does not analyse them ahead of time
+- the unmatched \[ \] tests do not pass since the interpreter does not analyse them ahead of time
 - the end of line test passes, but only on Linux (due to the lack of EOL consistency)
 
 # Examples
