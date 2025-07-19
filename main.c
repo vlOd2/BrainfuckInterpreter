@@ -7,9 +7,17 @@
 #include <signal.h>
 #include <time.h>
 
-#define DATA_ARRAY_SIZE 30000
+// Un-comment this to enable the 32-bit data array
+//#define INT32_DATA_ARRAY
 
+#ifdef INT32_DATA_ARRAY
+#define DATA_ARRAY_SIZE 30000 * 4
+static uint32_t* data;
+#else
+#define DATA_ARRAY_SIZE 30000
 static uint8_t* data;
+#endif
+
 static uint8_t* program;
 static int dataPtr = 0;
 static int programPtr = 0;

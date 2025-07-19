@@ -7,6 +7,7 @@ Features that this interpreter has:
 - Interpreter messages are written on stderr
 - Reading EOF will not write anything to the cell
 - Interrupting (ctrl+c) instantly aborts the execution
+- 8-bit or 32-bit data array (must be changed in the source code)
 
 This interpreter passes most of the tests from [here](https://brainfuck.org/tests.b), except for:
 - the unmatched \[/\] tests do not pass since the interpreter does not analyse them ahead of time
