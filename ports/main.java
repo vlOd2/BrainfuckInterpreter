@@ -161,7 +161,9 @@ public class Brainfuck {
 			System.err.printf("error: could not open: %s\n", args[0]);
 			return;
 		}
+		
 		data = new byte[DATA_ARRAY_SIZE];
+		System.err.println("running, press ctrl+c to abort, press ctrl+d EOF");
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 			System.err.printf("\naborted\n");
