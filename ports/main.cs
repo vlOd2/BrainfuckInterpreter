@@ -173,6 +173,12 @@ public static class Brainfuck
 		data = new byte[DATA_ARRAY_SIZE];
 		Console.Error.WriteLine("running, press ctrl+c to abort, press ctrl+d EOF");
 		
+		Console.CancelKeyPress += (sender, e) => 
+		{
+			Console.Error.WriteLine("\naborted");
+			Terminate(0);
+		};
+		
 		Stopwatch stopwatch = Stopwatch.StartNew();
 		while (programPtr < program.Length) 
 		{
