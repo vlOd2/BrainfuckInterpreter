@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import signal
 
 DATA_ARRAY_SIZE = 30001
 data = None
@@ -125,6 +126,10 @@ def load_program(name):
         throw
         return False
 
+def interrupt_handler(sig, frame):
+    print("\naborted", file=sys.stderr)
+    terminate(0)
+
 def main():
     global data
     global program
@@ -139,6 +144,7 @@ def main():
         return
 
     data = [0] * DATA_ARRAY_SIZE
+    signal.signal(signal.SIGINT, interrupt_handler)
     print("running, press ctrl+c to abort, press ctrl+d EOF", file=sys.stderr)
 
     start_time = time.time()
